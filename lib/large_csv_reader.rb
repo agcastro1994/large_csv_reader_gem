@@ -8,11 +8,19 @@ class LargeCsvReader
         @books_in_stock = []
     end
 
-    def massive_csv_builder(filename,column_names,rowMultiplicator="1")
+    def massive_csv_builder(filename,column_names,rowStructure,rowMultiplicator="1")
         generate_csv(filename,column_names)
         millions = rowMultiplicator.to_i
         millions.times do 
-            append_to_csv(filename)
+            append_to_csv(filename, rowStructure)
+        end
+    end
+
+    def massive_book_csv_builder(filename,column_names,rowMultiplicator="1")
+        generate_csv(filename,column_names)
+        millions = rowMultiplicator.to_i
+        millions.times do 
+            append_book_to_csv(filename)
         end
     end
 
